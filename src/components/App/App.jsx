@@ -1,4 +1,5 @@
 import Notification from "components/Notification";
+import Section from "components/Section";
 import { Component } from "react";
 
 export class App extends Component{
@@ -11,8 +12,10 @@ export class App extends Component{
   render() {
     return (
       <div>
-        <p>React homework template</p>
-        <Notification message="There is no feedback"/>
+        <Section title="Please leave feedback"></Section>
+        <Section title="Statictics">
+          <Notification message="There is no feedback"/>
+        </Section>
       </div>
     );
   }
