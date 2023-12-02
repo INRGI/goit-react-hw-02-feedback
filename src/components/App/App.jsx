@@ -1,3 +1,4 @@
+import FeedbackOptions from "components/FeedbackOptions";
 import Notification from "components/Notification";
 import Section from "components/Section";
 import Statictics from "components/Statictics";
@@ -9,6 +10,9 @@ export class App extends Component{
     neutral: 0,
     bad: 0
   };
+  onLeaveFeedback = state => {
+    this.setState(prevState =>({[state]:prevState[state] + 1}))
+  }
 
   totalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -25,10 +29,13 @@ export class App extends Component{
     const { good, neutral, bad } = this.state;
     const total = this.totalFeedback();
     const percentage = this.positivePercentage();
+    const options = Object.keys(this.state);
 
     return (
       <div>
-        <Section title="Please leave feedback"></Section>
+        <Section title="Please leave feedback">
+          <FeedbackOptions options={options} onLeaveFeedback={this.onLeaveFeedback} />
+        </Section>
         <Section title="Statictics">
           {total !== 0 ? (
             <Statictics
