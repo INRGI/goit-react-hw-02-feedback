@@ -3,6 +3,7 @@ import Notification from "components/Notification";
 import Section from "components/Section";
 import Statictics from "components/Statictics";
 import { Component } from "react";
+import { Container } from "./App.styled";
 
 export class App extends Component{
   state = {
@@ -32,7 +33,7 @@ export class App extends Component{
     const options = Object.keys(this.state);
 
     return (
-      <div>
+      <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions options={options} onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
@@ -46,9 +47,9 @@ export class App extends Component{
               positivePercentage={percentage} />
           ) : (
             <Notification message="There is no feedback" />
-          )};
+          )}
         </Section>
-      </div>
+      </Container>
     );
   }
 };
